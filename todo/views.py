@@ -4,6 +4,7 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from .forms import TodoForm
+from .forms import Todo
 
 def home(request):
     return render(request, 'todo/home.html')
@@ -25,7 +26,8 @@ def signup_user(request):
             return render(request, 'todo/signup_user.html', {'form': UserCreationForm(), 'error': 'Passwords did\t match'})
 
 def current_todos(request):
-    return render(request, 'todo/current_todos.html')
+    todos = Todo.objects.filter(user=request.user, datecompleted__isnull=True)
+    return render(request, 'todo/current_todos.html', {'todos': todos})
 
 def login_user(request):
     if request.method == 'GET':
