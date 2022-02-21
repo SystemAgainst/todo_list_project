@@ -22,12 +22,13 @@ urlpatterns = [
 
     # Auth
     path('signup/', views.signup_user, name='signup_user'),
-    path('login//', views.login_user, name='login_user'),
+    path('login/', views.login_user, name='login_user'),
     path('logout_user/', views.logout_user, name='logout_user'),
 
     # Todos
     path('', views.home, name='home'),
     path('current/', views.current_todos, name='current_todos'),
+    path('completed/', views.completedtodo, name='completedtodo'),
     path('create/', views.createtodo, name='createtodo'),
     path('todo/<int:todo_pk>', views.viewtodo, name='viewtodo'),
     path('todo/<int:todo_pk>/complete', views.completetodo, name='completetodo'),
