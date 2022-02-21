@@ -29,4 +29,6 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('current/', views.current_todos, name='current_todos'),
     path('create/', views.createtodo, name='createtodo'),
+    path('todo/<int:todo_pk>', views.viewtodo, name='viewtodo'),
+
 ]
